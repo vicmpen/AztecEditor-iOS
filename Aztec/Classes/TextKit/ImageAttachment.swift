@@ -107,6 +107,8 @@ open class ImageAttachment: MediaAttachment {
         switch size {
         case .full, .none:
             return floor(min(image.size.width, containerWidth))
+        case .container:
+            return containerWidth
         default:
             return floor(min(min(image.size.width,size.width), containerWidth))
         }
@@ -188,6 +190,7 @@ extension ImageAttachment {
         case medium
         case large
         case full
+        case container
         case none
 
         var shouldResizeAsset: Bool {
@@ -204,7 +207,7 @@ extension ImageAttachment {
                 return "size-large"
             case .full:
                 return "size-full"
-            case .none:
+                case .none, .container:
                 return ""
             }
         }
@@ -226,7 +229,7 @@ extension ImageAttachment {
             case .thumbnail: return Settings.thumbnail
             case .medium: return Settings.medium
             case .large: return Settings.large
-            case .full: return Settings.maximum
+            case .full, .container: return Settings.maximum
             case .none: return Settings.maximum
             }
         }
