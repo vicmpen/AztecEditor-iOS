@@ -5,7 +5,7 @@ import UIKit
 ///
 open class LineAttachment: NSTextAttachment {
     
-    fileprivate var glyphImage: UIImage? = UIImage(named: "AppIcon")
+    fileprivate var glyphImage: UIImage? = UIImage(named: "SeparatorDots")
     
     fileprivate var screenWidth: CGFloat {
         get {
